@@ -14,5 +14,5 @@ MAXSEQ +=Step，并持久化MAXSEQ
 
 二、在生成的数据表中添加初始化数据                                                                                                       
 table_name           max_seq                                                                                                         
-   user              10000
-                  (初始值)
+    user              10000                                                          
+                     (初始值)
