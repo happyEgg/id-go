@@ -1,7 +1,7 @@
 package models
 
-type MaxSeqInfo struct {
-	Id        int32
-	TableName string `orm:"unique,size(50)"`
-	MaxSeq    int64
+type MaxSeq struct {
+	Id     int32
+	Name   string `orm:"unique,size(50)"`
+	MaxSeq int64
 }

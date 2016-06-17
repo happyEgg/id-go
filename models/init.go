@@ -14,13 +14,14 @@ var Step int64
 
 func init() {
 	mariadbInit()
+	InsertDB()
 }
 
 func mariadbInit() {
 	var err error
 
 	orm.RegisterModel(
-		new(MaxSeqInfo),
+		new(MaxSeq),
 	)
 	mode := beego.BConfig.RunMode
 	user := beego.AppConfig.String(mode + "::user")
@@ -50,4 +51,17 @@ func mariadbInit() {
 	}
 	orm.RunSyncdb(dbname, false, false)
 	BeegoOrm.Using(dbname)
+}
+
+//如果数据库没有此条数据就插入
+func InsertDB() {
+	name := beego.AppConfig.String("fieldName")
+	startNum, _ := beego.AppConfig.Int64("startNum")
+	exist := BeegoOrm.QueryTable("max_seq").Filter("name", name).Exist()
+	if !exist {
+		var maxSeq = new(MaxSeq)
+		maxSeq.Name = name
+		maxSeq.MaxSeq = startNum
+		BeegoOrm.Insert(maxSeq)
+	}
 }
