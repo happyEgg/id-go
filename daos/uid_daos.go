@@ -8,7 +8,7 @@ import (
 	"id-go/models"
 )
 
-func ReadMaxSeq() (*models.MaxSeq, error) {
+func ReadUidMaxSeq() (*models.MaxSeq, error) {
 	var maxSeq = new(models.MaxSeq)
 
 	o := models.BeegoOrm
@@ -29,7 +29,7 @@ func ReadMaxSeq() (*models.MaxSeq, error) {
 	return maxSeq, nil
 }
 
-func UpdateMaxSeq() {
+func UpdateUidMaxSeq() {
 	o := models.BeegoOrm
 
 	_, err := o.QueryTable("max_seq").Filter("name", "user").Update(orm.Params{

@@ -22,6 +22,7 @@ func mariadbInit() {
 
 	orm.RegisterModel(
 		new(MaxSeq),
+		new(OrderMaxseq),
 	)
 	mode := beego.BConfig.RunMode
 	user := beego.AppConfig.String(mode + "::user")

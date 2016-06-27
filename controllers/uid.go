@@ -23,7 +23,7 @@ func (c *UidController) GetUid() {
 	tempNum++
 
 	if tempNum >= MAXSEQ {
-		go daos.UpdateMaxSeq()
+		go daos.UpdateUidMaxSeq()
 
 		MAXSEQ += models.Step
 	}
