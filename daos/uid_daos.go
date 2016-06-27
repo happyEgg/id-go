@@ -15,7 +15,7 @@ func ReadUidMaxSeq() (*models.MaxSeq, error) {
 
 	err := o.QueryTable("max_seq").Filter("name", "user").One(maxSeq)
 	if err == orm.ErrNoRows {
-		err = errors.New("没有此条数据")
+		err = errors.New("没有此条数据，请确定数据库max_seq表中有name字段为user的数据")
 		return nil, err
 	}
 

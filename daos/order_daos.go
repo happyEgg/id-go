@@ -15,7 +15,7 @@ func ReadOrderMaxSeq() (*models.OrderMaxseq, error) {
 
 	err := o.QueryTable("order_maxseq").Filter("name", "order").One(orderMax)
 	if err == orm.ErrNoRows {
-		err = errors.New("没有此条数据")
+		err = errors.New("没有此条数据，请确定数据库order_maxseq表中有name字段为order的数据")
 		return nil, err
 	}
 
