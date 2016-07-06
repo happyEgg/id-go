@@ -23,7 +23,7 @@ func (c *OrderController) GetOrderId() {
 	orderTempNum++
 
 	if orderTempNum >= orderMaxSeq {
-		go daos.UpdateOrderMaxSeq()
+		go daos.UpdateMaxSeq("order")
 
 		orderMaxSeq += models.Step
 	}

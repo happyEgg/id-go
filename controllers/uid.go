@@ -10,23 +10,23 @@ import (
 	"id-go/models"
 )
 
-var mutex sync.Mutex
+var uidMutex sync.Mutex
 
 type UidController struct {
 	beego.Controller
 }
 
 func (c *UidController) GetUid() {
-	mutex.Lock()
-	defer mutex.Unlock()
+	uidMutex.Lock()
+	defer uidMutex.Unlock()
 
-	tempNum++
+	uidTempNum++
 
-	if tempNum >= MAXSEQ {
-		go daos.UpdateUidMaxSeq()
+	if uidTempNum >= uidMaxSeq {
+		go daos.UpdateMaxSeq("user")
 
-		MAXSEQ += models.Step
+		uidMaxSeq += models.Step
 	}
 
-	common.Result(c.Controller, nil, tempNum)
+	common.Result(c.Controller, nil, uidTempNum)
 }

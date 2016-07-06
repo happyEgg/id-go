@@ -12,18 +12,18 @@ import (
 
 var albumMutex sync.Mutex
 
-type UidController struct {
+type AlbumController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetUid() {
+func (c *UidController) GetAlbumId() {
 	albumMutex.Lock()
 	defer albumMutex.Unlock()
 
 	albumTempNum++
 
 	if albumTempNum >= albumMaxSeq {
-		go daos.UpdateOrderMaxSeq()
+		go daos.UpdateMaxSeq("album")
 
 		albumMaxSeq += models.Step
 	}
