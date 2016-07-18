@@ -16,7 +16,7 @@ type SendGiftController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetSendGiftId() {
+func (c *SendGiftController) GetSendGiftId() {
 	sendGiftMutex.Lock()
 	defer sendGiftMutex.Unlock()
 

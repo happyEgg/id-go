@@ -16,7 +16,7 @@ type AccountOptController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetAccountOptId() {
+func (c *AccountOptController) GetAccountOptId() {
 	accountOptMutex.Lock()
 	defer accountOptMutex.Unlock()
 

@@ -16,7 +16,7 @@ type LikeController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetLikeId() {
+func (c *LikeController) GetLikeId() {
 	likeMutex.Lock()
 	defer likeMutex.Unlock()
 

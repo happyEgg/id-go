@@ -16,7 +16,7 @@ type AlbumController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetAlbumId() {
+func (c *AlbumController) GetAlbumId() {
 	albumMutex.Lock()
 	defer albumMutex.Unlock()
 

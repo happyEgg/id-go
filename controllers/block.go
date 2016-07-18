@@ -16,7 +16,7 @@ type BlockController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetBlockId() {
+func (c *BlockController) GetBlockId() {
 	blockMutex.Lock()
 	defer blockMutex.Unlock()
 

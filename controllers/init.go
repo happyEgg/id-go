@@ -18,6 +18,7 @@ var userGiftMaxSeq, userGiftTempNum int64
 var sendGiftMaxSeq, sendGiftTempNum int64
 var accountOptMaxSeq, accountOptTempNum int64
 var pointMaxSeq, pointTempNum int64
+var reportMaxSeq, reportTempNum int64
 
 func init() {
 	InitUidMaxSeq()
@@ -30,6 +31,7 @@ func init() {
 	InitSendGiftMaxSeq()
 	InitAccountOptMaxSeq()
 	InitPointMaxSeq()
+	InitReportMaxSeq()
 }
 
 func InitUidMaxSeq() {
@@ -140,4 +142,15 @@ func InitPointMaxSeq() {
 
 	pointMaxSeq = seq.MaxSeq + models.Step
 	pointTempNum = seq.MaxSeq
+}
+
+func InitReportMaxSeq() {
+	seq, err := daos.ReadMaxSeq("report")
+	if err != nil {
+		log.Println("err:", err)
+		os.Exit(-1)
+	}
+
+	reportMaxSeq = seq.MaxSeq + models.Step
+	reportTempNum = seq.MaxSeq
 }

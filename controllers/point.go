@@ -16,7 +16,7 @@ type PointController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetPointId() {
+func (c *PointController) GetPointId() {
 	pointMutex.Lock()
 	defer pointMutex.Unlock()
 

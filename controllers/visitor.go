@@ -16,7 +16,7 @@ type VisitorController struct {
 	beego.Controller
 }
 
-func (c *UidController) GetVisitorId() {
+func (c *VisitorController) GetVisitorId() {
 	visitorMutex.Lock()
 	defer visitorMutex.Unlock()
 
